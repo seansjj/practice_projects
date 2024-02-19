@@ -3,24 +3,72 @@ import random
 from game_art import logo, vs
 from instagram_data import data
 
-def random_element():
-    '''selects random instagram account, removes it from data list to avoid repeats '''
-    random_account = random.choice(data)
-    print(random_account)
+SLOT_A = random.choice(data)
+SLOT_B = random.choice(data)
 
-random_element()
-random_element()
+SCORE = 18
 
-# choose 2 random dictionary list
-# create comparison with f string referring to dictionary name, career, country
+def account_blurb(account):
+    '''gets name, description, country of instagram account'''
+    name =  account.get('name')
+    description = account.get('description')
+    country = account.get('country')
+    article = 'a'
 
-# ask who has more followers
+    vowels = ['A','E','I','O','U']
 
-# move B up to A after answer
+    if description[0] in vowels:
+        article = 'an' 
 
-# if correct, clear and update score on top
+    print(f'{name}, {article} {description}, from {country}')
 
-# if incorrect, ending screen, final score
+def game_answer(account1, account2):
+    '''returns a or b for whichever account has more followers'''
+    followers1 = account1.get('follower_count')
+    followers2 = account2.get('follower_count')
+    
+    # tester code for follower count
+    print(f'A: {followers1}. B: {followers2}')
 
-# print logos
+    if followers1 > followers2:
+        return 'a'
+    else:
+        return 'b'
+
+def clear(seconds = 0):
+    '''clears text in terminal '''
+    time.sleep(seconds)
+    os.system('clear')
+
+print(logo)
+
+print('Compare A:')
+account_blurb(SLOT_A)
+
+print(vs)
+
+print('Against B:')
+account_blurb(SLOT_B)
+
+guess = input('Who has more followers? Type A or B: ')
+
+if guess.lower() == game_answer(SLOT_A,SLOT_B):
+    print('Correct')
+else:
+    clear()
+    print(logo)
+    print('Sorry, you are wrong. Final score: {SCORE}')
+
+
+# find way to clear terminal
+
+# if another answer, go to game over screen
+
+# terminal clears
+
+# score updates on top, comparison B becomes A now
+
+# add case if runs out of questions
+
+# find way for no repeats
 
