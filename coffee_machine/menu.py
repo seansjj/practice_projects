@@ -1,4 +1,4 @@
-MENU = {
+menu = {
     "espresso": {
         "ingredients": {
             "water": 50,
@@ -24,7 +24,7 @@ MENU = {
     }
 }
 
-resources = {
+starting_stock = {
     "water": 300,
     "milk": 200,
     "coffee": 100,
