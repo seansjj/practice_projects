@@ -1,20 +1,29 @@
 import random
+import turtle
 from turtle import Screen, Turtle
 
 cursor = Turtle()
-angle = [0, 90, 180, 270]
-colours = ['blue', 'red', 'green', 'yellow']
+turtle.colormode(255)
 
-cursor.width(5)
 
-for turtle in range(20):
-    cursor.pencolor(random.choice(colours))
-    cursor.right(random.choice(angle))
-    cursor.forward(25)
+def random_colour():
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
 
-# random walk
-# line thick
-# speed up
+    colour = (r, g, b)
+
+    return colour
+
+
+cursor.speed(0)
+rotation = 0
+
+for _ in range(60):
+    cursor.pencolor(random_colour())
+    cursor.circle(100)
+    rotation += 1
+    cursor.setheading(6 * rotation)
 
 screen = Screen()
 screen.exitonclick()
