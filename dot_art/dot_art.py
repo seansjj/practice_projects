@@ -31,7 +31,7 @@ def paint_2rows(double_rows):
         paint_forward(1)
         cursor.right(90)
 
-        
+
 paint_2rows(5)
 
 
